@@ -81,14 +81,23 @@ function simular() {
   document.getElementById('resultado').innerHTML = resultado;
 }
 
-function compartilhar() {
-  const { jsPDF } = window.jspdf;
-  const pdf = new jsPDF();
-  pdf.text('Contratação de Empréstimos TROCA MAIS', 10, 10);
-  pdf.text(document.getElementById('resultado').innerText, 10, 20);
-  pdf.text(`Data: ${new Date().toLocaleDateString()} Hora: ${new Date().toLocaleTimeString()}`, 10, 180);
-  pdf.save('Emprestimo_TROCA_MAIS.pdf');
-}
+ function compartilhar() {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+      pdf.setFontSize(18);
+      pdf.setTextColor(0, 0, 255);
+      pdf.text('Contratação de Empréstimos TROCA MAIS', 10, 10);
+      pdf.setFontSize(12);
+      pdf.setTextColor(0, 0, 0);
+      const lines = document.getElementById('resultado').innerText.split('\n');
+      let y = 20;
+      lines.forEach(line => {
+        pdf.text(line, 10, y);
+        y += 10;
+      });
+      pdf.text(`Data: ${new Date().toLocaleDateString()} Hora: ${new Date().toLocaleTimeString()}`, 10, y + 10);
+      pdf.save('Emprestimo_TROCA_MAIS.pdf');
+    }
 
   </script>
 </body>

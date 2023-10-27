@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang='pt-BR'>
+
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js'></script>
-  <link rel='stylesheet' href='styles.css'>
-  <title>Contratação de Empréstimos TROCA MAIS</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js'></script>
+    <link rel='stylesheet' href='styles.css'>
+    <title>Contratação de Empréstimos TROCA MAIS</title>
 </head>
+
 <body>
-  <div class='container'>
-    <h1 class='text-primary text-center'>Contratação de Empréstimos TROCA MAIS</h1>
-    <!-- Formulário de entrada -->
-    <div class='form-group'>
-      <label for='bandeira'>Selecione a bandeira do cartão:</label>
-      <select class='form-control' id='bandeira' required>
-        <option value='visa'>Visa</option>
-        <!-- ...restante das opções... -->
-      </select>
+    <div class='container'>
+        <h1 class='text-primary text-center'>Contratação de Empréstimos TROCA MAIS</h1>
+        <div class='form-group'>
+            <label for='bandeira'>Selecione a bandeira do cartão:</label>
+            <select class='form-control' id='bandeira' required>
+                <option value='visa'>Visa</option>
+                <option value='master'>Master</option>
+                <option value='hiper'>Hiper</option>
+                <option value='elo'>Elo</option>
+                <option value='outra'>Outra</option>
+            </select>
+        </div>
+        <div class='form-group'>
+            <label for='limite'>Limite disponível:</label>
+            <input type='number' class='form-control' id='limite' placeholder='Informe o limite disponível' required min='1'>
+        </div>
+        <div class='form-group'>
+            <label for='parcelas'>Quantidade de parcelas:</label>
+            <select class='form-control' id='parcelas' required>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <!-- ...restante das opções... -->
+                <option value='18'>18</option>
+            </select>
+        </div>
+        <button class='btn btn-primary' onclick='simular()'>Simular</button>
+        <div id='resultado' class='mt-4'></div>
+        <button class='btn btn-success mt-4' onclick='compartilhar()'>Compartilhar</button>
     </div>
-    <!-- ...restante do formulário... -->
-    <button class='btn btn-primary' onclick='simular()'>Simular</button>
-    <div id='resultado' class='mt-4'></div>
-    <button class='btn btn-success mt-4' onclick='compartilhar()'>Compartilhar</button>
-  </div>
-  <script src='script.js'></script>
+    <script src='script.js'></script>
 </body>
+
 </html>

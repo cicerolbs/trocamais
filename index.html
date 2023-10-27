@@ -84,9 +84,20 @@ function simular() {
 function compartilhar() {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF();
+
+  pdf.setFontSize(14);
+  pdf.setFontType('bold');
   pdf.text('Contratação de Empréstimos TROCA MAIS', 10, 10);
-  pdf.text(document.getElementById('resultado').innerText, 10, 20);
+  pdf.text('Demonstrativo:', 10, 20);
+
+  pdf.setFontSize(12);
+  pdf.setFontType('normal');
+  pdf.text(document.getElementById('resultado').innerText, 10, 30);
+
+  pdf.setFontSize(12);
+  pdf.setFontType('normal');
   pdf.text(`Data: ${new Date().toLocaleDateString()} Hora: ${new Date().toLocaleTimeString()}`, 10, 180);
+
   pdf.save('Emprestimo_TROCA_MAIS.pdf');
 }
 

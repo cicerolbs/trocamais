@@ -44,6 +44,11 @@ function simular() {
 }
 
 function compartilhar() {
+    const resultado = document.getElementById('resultado');
+    if (resultado.innerHTML === '') {
+        alert('Por favor, simule primeiro antes de compartilhar.');
+        return;
+    }
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
     pdf.setFontSize(18);

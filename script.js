@@ -8,8 +8,29 @@ const juros = {
 
 function simular() {
     const bandeira = document.getElementById('bandeira').value;
-    const limite = parseFloat(document.getElementById('limite').value);
+    const limiteElement = document.getElementById('limite');
+    const limite = parseFloat(limiteElement.value);
     const parcelas = parseInt(document.getElementById('parcelas').value);
+
+    // Validar a seleção da bandeira do cartão
+    if (!bandeira) {
+        alert('Por favor, selecione uma bandeira de cartão.');
+        return;  // Termina a execução da função se a bandeira não for selecionada
+    }
+
+    // Validar o valor do limite
+    if (isNaN(limite) || limite <= 0) {
+        alert('Por favor, insira um valor de limite válido.');
+        limiteElement.focus();  // Coloca o foco no campo de limite
+        return;  // Termina a execução da função se o limite não for válido
+    }
+
+    // Validar a seleção de parcelas
+    if (!parcelas || parcelas < 1 || parcelas > 18) {
+        alert('Por favor, selecione um número válido de parcelas.');
+        return;  // Termina a execução da função se a seleção de parcelas não for válida
+    }
+    
     const taxa = juros[bandeira][parcelas - 1] / 100;
     const valorEmprestimo = limite;
     const totalPagar = limite * (1 + taxa);

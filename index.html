@@ -84,39 +84,9 @@ function simular() {
 function compartilhar() {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF();
-
-  // Add a blue header for the company name
-  pdf.setTextColor(0, 0, 255);
-  pdf.setFontSize(18);
-  pdf.setFontType('bold');
   pdf.text('Contratação de Empréstimos TROCA MAIS', 10, 10);
-
-  // Reset text color and font size
-  pdf.setTextColor(0, 0, 0);
-  pdf.setFontSize(12);
-  pdf.setFontType('normal');
-
-  // Get the result text and split it into lines
-  const resultText = document.getElementById('resultado').innerText;
-  const lines = resultText.split('\n');
-
-  // Add each line as a new item in the PDF
-  let yPosition = 20;
-  lines.forEach(line => {
-    pdf.setFontType('bold');
-    const [title, value] = line.split(': ');
-    pdf.text(`${title}:`, 10, yPosition);
-
-    pdf.setFontType('normal');
-    pdf.text(value, 60, yPosition);
-    yPosition += 10;
-  });
-
-  // Add date and time
-  pdf.setFontSize(10);
-  pdf.text(`Data: ${new Date().toLocaleDateString()} Hora: ${new Date().toLocaleTimeString()}`, 10, yPosition + 10);
-
-  // Save the PDF
+  pdf.text(document.getElementById('resultado').innerText, 10, 20);
+  pdf.text(`Data: ${new Date().toLocaleDateString()} Hora: ${new Date().toLocaleTimeString()}`, 10, 180);
   pdf.save('Emprestimo_TROCA_MAIS.pdf');
 }
 

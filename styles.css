@@ -1,5 +1,51 @@
-.container {
-    margin-top: 20px;
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
 }
 
+.container-fluid {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+#resultado {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    display: none;  /* Esconde o resultado até que seja gerado */
+}
+
+.btn {
+    width: 100%;  /* Faz os botões ocuparem a largura total */
+}
+
+/* Estilos para impressão (PDF) */
+@media print {
+    body {
+        color: black;
+    }
+    .container-fluid {
+        color: black;
+        background-color: white;
+        box-shadow: none;
+    }
+    #resultado {
+        background-color: white;
+    }
+    .btn {
+        display: none;  /* Esconde os botões na impressão */
+    }
+}
 

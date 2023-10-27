@@ -55,6 +55,37 @@
     <div id='resultado' class='mt-4'></div>
     <button class='btn btn-secondary mt-4' onclick='compartilhar()'>Compartilhar</button>
   </div>
-  <!-- JavaScript será inserido aqui -->
+  <script>
+    const juros = {
+  'visa': [1.39, 3.76, 4.09, 4.78, 5.47, 6.14, 6.79, 7.64, 8.3, 8.95, 9.6, 10, 10.7, 12.29, 12.89, 13.53, 14.14, 15.34],
+  'master': [1.39, 3.76, 4.09, 4.78, 5.47, 6.14, 6.79, 7.64, 8.3, 8.95, 9.6, 10, 10.7, 12.29, 12.89, 13.53, 14.14, 15.34],
+  'hiper': [2.39, 4.73, 5.27, 5.69, 6.63, 7.32, 7.97, 9.43, 10.1, 11.4, 12, 12.06, 12.65, 13.32, 13.9, 14.53, 15.13, 16.34],
+  'elo': [2.39, 4.73, 5.27, 5.69, 6.63, 7.32, 7.97, 9.43, 10.1, 11.4, 12, 12.06, 12.65, 13.32, 13.9, 14.53, 15.13, 16.34],
+  'outra': [2.39, 4.73, 5.27, 5.69, 6.63, 7.32, 7.97, 9.43, 10.1, 11.4, 12, 12.06, 12.65, 13.32, 13.9, 14.53, 15.13, 16.34]
+};
+
+function simular() {
+  const bandeira = document.getElementById('bandeira').value;
+  const limite = parseFloat(document.getElementById('limite').value);
+  const parcelas = parseInt(document.getElementById('parcelas').value);
+  const taxa = juros[bandeira][parcelas - 1] / 100;
+  const valorEmprestimo = limite;
+  const totalPagar = limite * (1 + taxa) ** parcelas;
+  const valorParcela = totalPagar / parcelas;
+  const jurosMensais = taxa * 100;
+  const jurosAnuais = (1 + taxa) ** 12 - 1;
+  const cet = ((1 + taxa) ** 12 - 1) * 100;
+  const resultado = `Valor do empréstimo: R$ ${valorEmprestimo.toFixed(2)}<br>Total a ser pago: R$ ${totalPagar.toFixed(2)}<br>Quantidade de parcelas: ${parcelas}<br>Juros ao mês: ${jurosMensais.toFixed(2)}%<br>Juros ao ano: ${jurosAnuais.toFixed(2)}%<br>Custo Efetivo Total (CET): ${cet.toFixed(2)}%<br>Bandeira do cartão: ${bandeira.toUpperCase()}`;
+  document.getElementById('resultado').innerHTML = resultado;
+}
+
+function compartilhar() {
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF();
+  pdf.text('Contratação de Empréstimos TROCA MAIS', 10, 10);
+  pdf.text(document.getElementById('resultado').innerText, 10, 20);
+  pdf.save('Simulacao_Emprestimo_TROCA_MAIS.pdf');
+}
+  </script>
 </body>
 </html>

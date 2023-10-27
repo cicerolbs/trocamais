@@ -30,13 +30,15 @@ function compartilhar() {
     pdf.text('Contratação de Empréstimos TROCA MAIS', 10, 10);
     pdf.setFontSize(12);
     pdf.setTextColor(0, 0, 0);
+    pdf.setLineWidth(0.5);
+    pdf.line(10, 15, 200, 15);  // Adiciona uma linha de separação
     const lines = document.getElementById('resultado').innerText.split('\n');
     let y = 20;
     lines.forEach(line => {
         pdf.text(line, 10, y);
         y += 10;
     });
-    pdf.text(`Data: ${new Date().toLocaleDateString()} Hora: ${new Date().toLocaleTimeString()}`, 10, y + 10);
+    pdf.line(10, y + 5, 200, y + 5);  // Adiciona outra linha de separação
+    pdf.text(`Data: ${new Date().toLocaleDateString()} Hora: ${new Date().toLocaleTimeString()}`, 10, y + 15);
     pdf.save('Emprestimo_TROCA_MAIS.pdf');
 }
-

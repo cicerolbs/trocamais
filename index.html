@@ -77,8 +77,11 @@ function simular() {
   const jurosAno = (Math.pow(1 + taxa, 12) - 1) * 100;
   const cet = ((Math.pow(1 + taxa, parcelas) - 1) * 100).toFixed(2);
 
-  const resultado = `Valor do empréstimo: R$ ${valorEmprestimo.toFixed(2)}<br>Total a ser pago: R$ ${totalPagar.toFixed(2)}<br>Quantidade de parcelas: ${parcelas}<br>Juros ao mês: ${jurosMes.toFixed(2)}%<br>Juros ao ano: ${jurosAno.toFixed(2)}%<br>Custo Efetivo Total: ${cet}%<br>Bandeira do cartão: ${bandeira.toUpperCase()}`;
-  document.getElementById('resultado').innerHTML = resultado;
+const valorParcela = totalPagar / parcelas;
+
+const resultado = `Valor do empréstimo: R$ ${valorEmprestimo.toFixed(2)}<br>Total a ser pago: R$ ${totalPagar.toFixed(2)}<br>Valor da Parcela: R$ ${valorParcela.toFixed(2)}<br>Quantidade de parcelas: ${parcelas}<br>Juros ao mês: ${jurosMes.toFixed(2)}%<br>Juros ao ano: ${jurosAno.toFixed(2)}%<br>Custo Efetivo Total: ${cet}%<br>Bandeira do cartão: ${bandeira.toUpperCase()}`;
+
+document.getElementById('resultado').innerHTML = resultado;
 }
 
  function compartilhar() {

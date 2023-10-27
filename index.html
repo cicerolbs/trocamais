@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'outra': [2.39, 4.73, 5.27, 5.69, 6.63, 7.32, 7.97, 9.43, 10.1, 11.4, 12, 12.06, 12.65, 13.32, 13.9, 14.53, 15.13, 15.73, 16.34]
   };
 
-  document.getElementById('simular').addEventListener('click', function() {
+  function simular() {
     const bandeira = document.getElementById('bandeira').value;
     const limite = parseFloat(document.getElementById('limite').value);
     const parcelas = parseInt(document.getElementById('parcelas').value);
@@ -80,9 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const resultado = `Valor do empréstimo: R$ ${valorEmprestimo.toFixed(2)}\nTotal a ser pago: R$ ${totalPagar.toFixed(2)}\nQuantidade de parcelas: ${parcelas}\nJuros ao mês: ${jurosMensais.toFixed(2)}%\nJuros ao ano: ${jurosAnuais.toFixed(2)}%\nCusto Efetivo Total: ${custoEfetivo.toFixed(2)}%\nBandeira do cartão: ${bandeira.toUpperCase()}`;
     document.getElementById('resultado').innerText = resultado;
-  });
+  }
 
-  document.getElementById('compartilhar').addEventListener('click', function() {
+  function compartilhar() {
     const pdf = new jsPDF();
     pdf.setFontSize(14);
     pdf.setFontType('bold');
@@ -95,8 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
     pdf.setFontType('normal');
     pdf.text(`Data: ${new Date().toLocaleDateString()} Hora: ${new Date().toLocaleTimeString()}`, 10, 180);
     pdf.save('Emprestimo_TROCA_MAIS.pdf');
-  });
+  }
+
+  document.getElementById('simular').addEventListener('click', simular);
+  document.getElementById('compartilhar').addEventListener('click', compartilhar);
 });
+
 
   </script>
 </body>
